@@ -524,7 +524,7 @@ def run_session():
             chat_history.append({"role": "assistant", "content": full_response})
 
         except KeyboardInterrupt:
-            print("\nSession closing neural loops cleanly... Goodbye.")
+            print("\nSession closing... type 'deactivate' to exit the venv and 'cd' to take you home. or just type 'mm' if you have Azeem's bash shortcuts installed.")
             break
 
 if __name__ == "__main__":

@@ -18,8 +18,16 @@ The core architecture moves beyond traditional RAG (Retrieval-Augmented Generati
 
 Ensure the following system background engines are active before firing up the neural runtime script:
 
-1.  **Ollama CLI:** Make sure `ollama ls` shows your model installed. Ollama by default runs on port 11434. To download a model, such as Qwen3:14B, use `ollama pull modelname`, for example: `ollama pull qwen3:14b`.
-2.  **Qdrant Vector Database:** Docker Container Service running on Port 6333:
+1.  **Ollama CLI** 
+Make sure `ollama ls` shows your model installed. Ollama by default runs on Port 11434. To download a model, such as Qwen3:14B, use `ollama pull modelname`, for example:
+
+    ```
+    ollama pull qwen3:14b
+    ```
+
+2.  **Qdrant Vector Database** 
+Make sure you have Qdrant's Docker Container Service running on Port 6333:
+
     ```bash
     docker run -p 6333:6333 qdrant/qdrant:latest 
     ```
@@ -32,7 +40,7 @@ Ensure the following system background engines are active before firing up the n
    ```bash
    cd
    git clone https://github.com/azeemh/azeem_ai.git
-   cd ~/azeem_ai
+   cd azeem_ai
    ```
 
 2. **Initialize and Activate Your Isolated Python Virtual Environment:**
@@ -50,7 +58,7 @@ Ensure the following system background engines are active before firing up the n
 
 ## Interactive Console Command Guide
 
-Run the main application entry point execution script:
+Run the application:
 ```bash
 python azeem_ai_dreamer.py
 ```
@@ -82,7 +90,7 @@ rich==15.0.0
 sentence_transformers==6.1.0
 ```
 
-## Azeem's Bash Shortcuts (optional shortcut commands for your CLI)
+### Azeem's Bash Shortcuts (optional shortcut commands for your CLI)
 
 If you'd like to run **DREAMER** with the command `ai` 
 1. open your .bashrc with vi: `vi ~/.bashrc` and scroll to the end with your keyboard arrows
