@@ -4,11 +4,14 @@ An advanced, offline-first research AI system built with a biologically-inspired
 
 The core architecture moves beyond traditional RAG (Retrieval-Augmented Generation) by utilizing an asynchronous background loop that mimics human memory consolidation, semantic pruning, and dream cycles.
 
+A demonstration of how cognitive resonance thinking systems lead to reduction of doublethink, confusion, and lead to truth seeking behavior, whether the intelligence is organic or artificial. '[For future discussion, consider Azeem's forthcoming book: The Theory of Cognitive Resonance, which was originally written pre AI, proven and demonstrated on Humans first, and later proven on AI as well.]'
+
 ## Cognitive Architecture Features
 
-*   **Three-Tier Memory Hierarchy:** Separates immediate context windows (Electrical Working Memory) from fast state tracking (Short-Term Cache) and optimized, long-term conceptual stores (much like the Cerebral Cortex).
+*   **Three-Tier Memory Hierarchy:** Separates immediate context windows (Working Memory) from fast state tracking (Short-Term Cache) and optimized, long-term conceptual stores (Long Term Memory much like the Cerebral Cortex).
 *   **Asynchronous "Dream" Consolidation Loop:** A continuous background thread processes raw, real-time insights, strips out formatting clutter, flattens overlapping data boundaries, and resolves logical contradictions.
-*   **Refined Tool Handling, Researching, Cognitive Resonance, & Truth Seeking:** Generates search engine queries using an independent keyword extractor and executes structural multi-turn tool loops over live data streams.
+*   **Refined Tool Handling & Researching:** Generates search engine queries using an independent keyword extractor and executes structural multi-turn tool loops over live data streams.
+*   **Cognitive Resonance & Truth Seeking:** When faced with multiple sources claiming conflicting truths, it will either research more or acknowledge lack of info, and is instructed to only present information verified by multiple credible sources.
 *   **Dynamic Variable Metadata Weighting:** Stores raw facts along with salience indicators, timestamps, and access trackers to establish cognitive importance patterns.
 *   **Built-in Local Document Sharding:** Slices extensive textual materials into deep sliding overlapping window arrays using CPU-bound embedding matrices.
 
