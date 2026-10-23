@@ -72,19 +72,9 @@ The workspace environment features multiline interface handling. Type complex pr
 
 ---
 
-## Production Environment (`requirements.txt`)
+## Manage Qdrant Vector Memories: http://localhost:6333/
 
-```text
-beautifulsoup4==4.15.0
-duckduckgo_search==8.1.1
-html2text==2025.4.15
-ollama==0.6.3
-prompt_toolkit==3.0.53
-qdrant_client==1.20.0
-Requests==2.34.2
-rich==15.0.0
-sentence_transformers==6.1.0
-```
++ Memories Dashboard For Facts: http://localhost:6333/dashboard#/collections/fast_local_memories
 
 ### Azeem's Bash Shortcuts (optional shortcut commands for your CLI)
 
