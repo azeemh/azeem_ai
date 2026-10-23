@@ -1,4 +1,4 @@
-# Cognitive AI
+# DREAMER: Introducing Cognitive AI Architecture.
 
 An advanced, offline-first research AI system built with a biologically-inspired cognitive architecture. It operates entirely locally using Ollama for inference, Sentence Transformers for real-time text embeddings, and Qdrant as a multi-tier neural memory system.
 
@@ -8,7 +8,7 @@ The core architecture moves beyond traditional RAG (Retrieval-Augmented Generati
 
 *   **Three-Tier Memory Hierarchy:** Separates immediate context windows (Electrical Working Memory) from fast state tracking (Short-Term Cache) and optimized, long-term conceptual stores (much like the Cerebral Cortex).
 *   **Asynchronous "Dream" Consolidation Loop:** A continuous background thread processes raw, real-time insights, strips out formatting clutter, flattens overlapping data boundaries, and resolves logical contradictions.
-*   **Refined Tool Handling, Researching, & Truth Seeking:** Generates search engine queries using an independent keyword extractor and executes structural multi-turn tool loops over live data streams.
+*   **Refined Tool Handling, Researching, Cognitive Resonance, & Truth Seeking:** Generates search engine queries using an independent keyword extractor and executes structural multi-turn tool loops over live data streams.
 *   **Dynamic Variable Metadata Weighting:** Stores raw facts along with salience indicators, timestamps, and access trackers to establish cognitive importance patterns.
 *   **Built-in Local Document Sharding:** Slices extensive textual materials into deep sliding overlapping window arrays using CPU-bound embedding matrices.
 
