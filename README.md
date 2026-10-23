@@ -28,8 +28,10 @@ Ensure the following system background engines are active before firing up the n
 
 ## Installation & Local Environment Setup
 
-1. **Clone the Repository Workspace:**
+1. **Open a New Terminal Session, and Clone the Repository Workspace to your home directory:**
    ```bash
+   cd
+   git clone https://github.com/azeemh/azeem_ai.git
    cd ~/azeem_ai
    ```
 
@@ -84,12 +86,12 @@ sentence_transformers==6.1.0
 
 If you'd like to run **DREAMER** with the command `ai` 
 1. open your .bashrc with vi: `vi ~/.bashrc` and scroll to the end with your keyboard arrows
-2. press I to enter insert mode, then paste these aliases. 
+2. press I to enter insert mode, then paste these aliases. (this assumes you installed to a folder in your user's home directory called `azeem_ai`)
 ```
 #### Azeem's Bash Shortcuts ####
 
 #azeem_ai shortcuts
-alias ai="cd && cd local_ai && source ~/local_ai/venv/bin/activate && python3 azeem_ai_dreamer.py"
+alias ai="cd && cd azeem_ai && source ~/azeem_ai/venv/bin/activate && python3 azeem_ai_dreamer.py"
 
 #parsertongue python shortcuts
 alias activate="source venv/bin/activate"
@@ -101,3 +103,4 @@ alias mm="deactivate && cd"
 4. Afterwards you should be back at the command line. Type `source ~/.bashrc` to enable the use of your new bash shortcut in the current terminal session, or otherwise restart your terminal/start a new terminal session. 
 
 #### Upon successfully installing the bash shortcut, you should be able to type `ai` into your terminal and run DREAMER.
+
