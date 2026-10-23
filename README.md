@@ -72,9 +72,13 @@ The workspace environment features multiline interface handling. Type complex pr
 
 ---
 
-## Manage Qdrant Vector Memories: http://localhost:6333/
+## Manage Qdrant Vector Memories: 
 
-+ Memories Dashboard For Facts: http://localhost:6333/dashboard#/collections/fast_local_memories
+Manage The Qdrant Memories Database by going to http://localhost:6333/ in your browser while the Qdrant docker container is running.
+
++ Quick Link to Memories Dashboard For Facts: http://localhost:6333/dashboard#/collections/fast_local_memories
+
+---
 
 ### Azeem's Bash Shortcuts (optional shortcut commands for your CLI)
 
