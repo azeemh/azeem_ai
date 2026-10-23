@@ -86,7 +86,7 @@ sentence_transformers==6.1.0
 
 If you'd like to run **DREAMER** with the command `ai` 
 1. open your .bashrc with vi: `vi ~/.bashrc` and scroll to the end with your keyboard arrows
-2. press I to enter insert mode, then paste these aliases. (this assumes you installed to a folder in your user's home directory called `azeem_ai`)
+2. press I to enter insert mode, then paste these aliases. (the `ai` alias shortcut assumes you installed to a folder in your user's home directory called `azeem_ai`)
 ```
 #### Azeem's Bash Shortcuts ####
 
