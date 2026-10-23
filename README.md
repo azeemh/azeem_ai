@@ -56,7 +56,7 @@ Ensure the following system background engines are active before firing up the n
 
 Run the application:
 ```bash
-python azeem_ai_dreamer.py
+python3 azeem_ai_dreamer.py
 ```
 
 The workspace environment features multiline interface handling. Type complex prompt blocks freely and hit `Left ALT + Enter` to submit them.
