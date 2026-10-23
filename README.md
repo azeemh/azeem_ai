@@ -18,15 +18,12 @@ The core architecture moves beyond traditional RAG (Retrieval-Augmented Generati
 
 Ensure the following system background engines are active before firing up the neural runtime script:
 
-1.  **Ollama CLI** 
-Make sure `ollama ls` shows your model installed. Ollama by default runs on Port 11434. To download a model, such as Qwen3:14B, use `ollama pull modelname`, for example:
+1.  **Ollama CLI**
+   + Make sure `ollama ls` shows your model installed. 
+   + Ollama by default runs on Port 11434. 
+   + To download a model, such as Qwen3:14B, use `ollama pull modelname`, for example: `ollama pull qwen3:14b`
 
-    ```
-    ollama pull qwen3:14b
-    ```
-
-2.  **Qdrant Vector Database** 
-Make sure you have Qdrant's Docker Container Service running on Port 6333:
+2.  **Qdrant Vector Database** Make sure you have Qdrant's Docker Container Service running on Port 6333:
 
     ```bash
     docker run -p 6333:6333 qdrant/qdrant:latest 
@@ -63,16 +60,16 @@ Run the application:
 python azeem_ai_dreamer.py
 ```
 
-The workspace environment features multiline interface handling. Type your complex prompt blocks freely and hit `Left ALT + Enter` to submit them to the cognitive stack.
+The workspace environment features multiline interface handling. Type complex prompt blocks freely and hit `Left ALT + Enter` to submit them.
 
 | Terminal Operator | Architectural Trigger Function |
 | :--- | :--- |
-| `ingest path/to/book.md` | Clears old states and shards massive files into 500-line overlapping windows. |
-| `read http://example.com` | Drop/s heavy web scripts and downloads raw, flat-text scraping profiles. |
-| `--doc` | Appends a contextual pipeline suffix forcing semantic search matching. |
-| `--web` | Forces autonomous search engines to fetch external real-time data inputs. |
-| `rlhf ` | Suspends active processing to manually input negative reinforcement preferences. |
-| `exit` / `quit` | Closes running active threads and flushes active caching queues cleanly. |
+| `ingest path/to/book.md` | Reads documents into Qdrant shards with 500-line overlapping windows. |
+| `read http://example.com` | instructs AI to read a website and adds the website's text to the current context. |
+| `--doc` | Appends a contextual pipeline suffix. |
+| `--web` | Enables search engine to fetch external real-time data. |
+| `rlhf ` | Give AI reinforcement learning feedback... |
+| `exit` / `quit` | Closes the session. |
 
 ---
 
@@ -111,4 +108,3 @@ alias mm="deactivate && cd"
 4. Afterwards you should be back at the command line. Type `source ~/.bashrc` to enable the use of your new bash shortcut in the current terminal session, or otherwise restart your terminal/start a new terminal session. 
 
 #### Upon successfully installing the bash shortcut, you should be able to type `ai` into your terminal and run DREAMER.
-
