@@ -1,0 +1,103 @@
+# Cognitive AI
+
+An advanced, offline-first research AI system built with a biologically-inspired cognitive architecture. It operates entirely locally using Ollama for inference, Sentence Transformers for real-time text embeddings, and Qdrant as a multi-tier neural memory system.
+
+The core architecture moves beyond traditional RAG (Retrieval-Augmented Generation) by utilizing an asynchronous background loop that mimics human memory consolidation, semantic pruning, and dream cycles.
+
+## Cognitive Architecture Features
+
+*   **Three-Tier Memory Hierarchy:** Separates immediate context windows (Electrical Working Memory) from fast state tracking (Short-Term Cache) and optimized, long-term conceptual stores (much like the Cerebral Cortex).
+*   **Asynchronous "Dream" Consolidation Loop:** A continuous background thread processes raw, real-time insights, strips out formatting clutter, flattens overlapping data boundaries, and resolves logical contradictions.
+*   **Refined Tool Handling, Researching, & Truth Seeking:** Generates search engine queries using an independent keyword extractor and executes structural multi-turn tool loops over live data streams.
+*   **Dynamic Variable Metadata Weighting:** Stores raw facts along with salience indicators, timestamps, and access trackers to establish cognitive importance patterns.
+*   **Built-in Local Document Sharding:** Slices extensive textual materials into deep sliding overlapping window arrays using CPU-bound embedding matrices.
+
+---
+
+## System Prerequisites
+
+Ensure the following system background engines are active before firing up the neural runtime script:
+
+1.  **Ollama CLI:** Make sure `ollama ls` shows your model installed. Ollama by default runs on port 11434. To download a model, such as Qwen3:14B, use `ollama pull modelname`, for example: `ollama pull qwen3:14b`.
+2.  **Qdrant Vector Database:** Docker Container Service running on Port 6333:
+    ```bash
+    docker run -p 6333:6333 qdrant/qdrant:latest 
+    ```
+
+---
+
+## Installation & Local Environment Setup
+
+1. **Clone the Repository Workspace:**
+   ```bash
+   cd ~/azeem_ai
+   ```
+
+2. **Initialize and Activate Your Isolated Python Virtual Environment:**
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+
+3. **Install Exact Machine Learning Vector Stack Dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+---
+
+## Interactive Console Command Guide
+
+Run the main application entry point execution script:
+```bash
+python azeem_ai_dreamer.py
+```
+
+The workspace environment features multiline interface handling. Type your complex prompt blocks freely and hit `Left ALT + Enter` to submit them to the cognitive stack.
+
+| Terminal Operator | Architectural Trigger Function |
+| :--- | :--- |
+| `ingest path/to/book.md` | Clears old states and shards massive files into 500-line overlapping windows. |
+| `read http://example.com` | Drop/s heavy web scripts and downloads raw, flat-text scraping profiles. |
+| `--doc` | Appends a contextual pipeline suffix forcing semantic search matching. |
+| `--web` | Forces autonomous search engines to fetch external real-time data inputs. |
+| `rlhf ` | Suspends active processing to manually input negative reinforcement preferences. |
+| `exit` / `quit` | Closes running active threads and flushes active caching queues cleanly. |
+
+---
+
+## Production Environment (`requirements.txt`)
+
+```text
+beautifulsoup4==4.15.0
+duckduckgo_search==8.1.1
+html2text==2025.4.15
+ollama==0.6.3
+prompt_toolkit==3.0.53
+qdrant_client==1.20.0
+Requests==2.34.2
+rich==15.0.0
+sentence_transformers==6.1.0
+```
+
+## Azeem's Bash Shortcuts (optional shortcut commands for your CLI)
+
+If you'd like to run **DREAMER** with the command `ai` 
+1. open your .bashrc with vi: `vi ~/.bashrc` and scroll to the end with your keyboard arrows
+2. press I to enter insert mode, then paste these aliases. 
+```
+#### Azeem's Bash Shortcuts ####
+
+#azeem_ai shortcuts
+alias ai="cd && cd local_ai && source ~/local_ai/venv/bin/activate && python3 azeem_ai_dreamer.py"
+
+#parsertongue python shortcuts
+alias activate="source venv/bin/activate"
+alias mm="deactivate && cd"
+
+
+```
+3. Make sure you've pasted them correctly and quit with saving by pressing ESC, then press Z twice, then press ENTER. (to quit vi editor without saving press ESC, then type `:qa` or `:qa!`)
+4. Afterwards you should be back at the command line. Type `source ~/.bashrc` to enable the use of your new bash shortcut in the current terminal session, or otherwise restart your terminal/start a new terminal session. 
+
+#### Upon successfully installing the bash shortcut, you should be able to type `ai` into your terminal and run DREAMER.
