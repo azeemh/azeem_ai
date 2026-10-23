@@ -44,13 +44,13 @@ Ensure the following system background engines are active before firing up the n
    cd azeem_ai
    ```
 
-2. **Initialize and Activate Your Isolated Python Virtual Environment:**
+2. **Initialize and Activate Python Virtual Environment:**
    ```bash
    python3 -m venv venv
    source venv/bin/activate
    ```
 
-3. **Install Exact Machine Learning Vector Stack Dependencies:**
+3. **Install Dependencies:**
    ```bash
    pip install -r requirements.txt
    ```
