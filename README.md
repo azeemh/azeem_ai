@@ -26,7 +26,7 @@ The implementation of *Cognitive AI Architecture* also serves as a useful demons
 Ensure the following system background engines are active before firing up the neural runtime script:
 
 1.  **Ollama CLI**
-   + Make sure `ollama ls` shows your model installed. Ollama by default runs on Port 11434. This system expects to find your ollama models on the default port.
+   + Make sure `ollama ls` shows your model as installed. Ollama by default runs on Port 11434. DREAMER expects to find your ollama models on the default port.
    + To download a model, such as Qwen3:14B, use `ollama pull modelname`, for example: `ollama pull qwen3:14b`
 
 2.  **Qdrant Vector Database** Make sure you have Qdrant's Docker Container Service running on Port 6333:
