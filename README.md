@@ -72,10 +72,10 @@ The workspace environment features multiline interface handling. Type complex pr
 
 | Terminal Operator | Architectural Trigger Function |
 | :--- | :--- |
-| `ingest path/to/book.md` | Reads documents into Qdrant shards with 500-line overlapping windows. |
-| `read http://example.com` | instructs AI to read a website and adds the website's text to the current context. |
-| `--doc` | Appends a contextual pipeline suffix. |
-| `--web` | Enables search engine to fetch external real-time data. |
+| `ingest path/to/book.md` | Reads any doc/file, saves as qdrant shards. |
+| `read http://example.com` | Reads any website text & adds it to context. |
+| `--doc` | Enables AI to access ingested documents. |
+| `--web` | Enables AI to search external real-time data. |
 | `rlhf ` | Give AI reinforcement learning feedback... |
 | `exit` / `quit` | Closes the session. |
 
