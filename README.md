@@ -66,7 +66,7 @@ Run the application:
 python3 azeem_ai_dreamer.py
 ```
 
-If you'd like to run the original non-dreaming version (look at you, you aspiring scientist, ready to load the control version and everything! i love it...) use `azeem_ai.py`  
+If you'd like to run the original non-dreaming version use `azeem_ai.py` -- (look at you, you aspiring scientist, ready to load the control version and everything! i love it...)
 
 The workspace environment features multiline interface handling. Type complex prompt blocks freely and hit `Left ALT + Enter` to submit them.
 
