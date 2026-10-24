@@ -79,9 +79,9 @@ The workspace environment features multiline interface handling. Type complex pr
 
 ---
 
-## Manage Qdrant Vector Memories: 
+## Manage Qdrant Vector Memory: 
 
-Manage The Qdrant Memories Database by going to http://localhost:6333/ in your browser while the Qdrant docker container is running.
+Manage your Qdrant Memories Database by going to http://localhost:6333/ in your browser while the Qdrant docker container is running.
 
 + Quick Link to Memories Dashboard For Facts: http://localhost:6333/dashboard#/collections/fast_local_memories
 
@@ -107,4 +107,4 @@ alias mm="deactivate && cd"
 3. Make sure you've pasted them correctly and quit with saving by pressing ESC, then press Z twice, then press ENTER. (to quit vi editor without saving press ESC, then type `:qa` or `:qa!`)
 4. Afterwards you should be back at the command line. Type `source ~/.bashrc` to enable the use of your new bash shortcut in the current terminal session, or otherwise restart your terminal/start a new terminal session. 
 
-#### Upon successfully installing the bash shortcut, you should be able to type `ai` into your terminal and run DREAMER.
+Upon successfully installing the bash shortcut, you should be able to type **`ai`** into your terminal and run DREAMER.
