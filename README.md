@@ -2,9 +2,9 @@
 
 An advanced, offline-first research AI system built with a biologically-inspired cognitive architecture. It operates entirely locally using Ollama for inference, Sentence Transformers for real-time text embeddings, and Qdrant as a multi-tier neural memory system.
 
-***The core architecture moves beyond traditional RAG (Retrieval-Augmented Generation) by utilizing an asynchronous background loop that mimics human memory consolidation, semantic pruning, and dream cycles.***
+***The core architecture moves beyond traditional RAG (Retrieval-Augmented Generation) by utilizing an asynchronous background loop that mimics human memory consolidation, semantic pruning, and dream cycles. Salience and consolidation during dreaming reduce mental clutter.***
 
-**This system also serves as a demonstration of how Cognitive Resonance thinking systems lead to a reduction of doublethink, dissonance, and confusion, encourage critical thinking patterns, and lead to truth seeking behavior, regardless of whether the intelligence is organic or artificial.**
+**The implementation of *Cognitive AI Architecture* serves as a useful demonstration of how Cognitive Resonance thinking systems lead to a reduction of doublethink, dissonance, and confusion, encourage critical thinking patterns, and lead to truth seeking behavior, regardless of whether the intelligence is organic or artificial.**
 
 [For future discussion, consider Azeem's forthcoming book: The Theory of Cognitive Resonance, which was originally written pre AI, proven and demonstrated on Humans first, and later proven on AI as well.]
 
