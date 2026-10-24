@@ -31,10 +31,10 @@ Ensure the following system background engines are active before firing up the n
 
 2.  **Qdrant Vector Database Docker Container already running** 
    + Make sure you have Qdrant's Docker Container Service running on Port 6333:
-
-    ```bash
-    docker run -p 6333:6333 qdrant/qdrant:latest 
-    ```
+   
+   ```bash
+   docker run -p 6333:6333 qdrant/qdrant:latest 
+   ```
 
 ---
 
