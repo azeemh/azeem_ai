@@ -64,6 +64,8 @@ Run the application:
 python3 azeem_ai_dreamer.py
 ```
 
+If you'd like to run the non-dreaming version use `azeem_ai.py`  
+
 The workspace environment features multiline interface handling. Type complex prompt blocks freely and hit `Left ALT + Enter` to submit them.
 
 | Terminal Operator | Architectural Trigger Function |

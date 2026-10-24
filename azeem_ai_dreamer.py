@@ -14,7 +14,7 @@ import requests
 import ollama
 from qdrant_client import QdrantClient, models
 from sentence_transformers import SentenceTransformer
-from duckduckgo_search import DDGS
+from ddgs import DDGS
 import html2text
 import shutil
 from prompt_toolkit import prompt
