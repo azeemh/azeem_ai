@@ -2,7 +2,7 @@
 
 An advanced, offline-first research AI system built with a biologically-inspired cognitive architecture. It operates entirely locally using Ollama for inference, Sentence Transformers for real-time text embeddings, and Qdrant as a multi-tier neural memory system.
 
-***The core architecture moves beyond traditional RAG (Retrieval-Augmented Generation) by utilizing an asynchronous background loop that mimics human memory consolidation, semantic pruning, and dream cycles. Salience and consolidation during dreaming reduce mental clutter.***
+***The core architecture moves beyond traditional RAG (Retrieval-Augmented Generation) by utilizing an asynchronous background loop that mimics human memory consolidation, semantic pruning, and dream cycles. Salience and consolidation during dreaming reduce mental clutter in people -- thus it follows that they should work for any other system that seeks to emulate them.***
 
 **The implementation of *Cognitive AI Architecture* serves as a useful demonstration of how Cognitive Resonance thinking systems lead to a reduction of doublethink, dissonance, and confusion, encourage critical thinking patterns, and lead to truth seeking behavior, regardless of whether the intelligence is organic or artificial.**
 
@@ -64,7 +64,7 @@ Run the application:
 python3 azeem_ai_dreamer.py
 ```
 
-If you'd like to run the non-dreaming version use `azeem_ai.py`  
+If you'd like to run the original non-dreaming version (look at you, you aspiring scientist, ready to load the control version and everything! i love it...) use `azeem_ai.py`  
 
 The workspace environment features multiline interface handling. Type complex prompt blocks freely and hit `Left ALT + Enter` to submit them.
 
