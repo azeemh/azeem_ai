@@ -31,11 +31,21 @@ Ensure the following system background engines are active before firing up the n
    + To download a model, such as Qwen3:14B, use `ollama pull modelname`, for example: `ollama pull qwen3:14b`
 
 2.  **Qdrant Vector Database Docker Container already running** 
-   + Make sure you have Qdrant's Docker Container Service running on Port 6333:
+   + First make a local volume so your qdrant memories survive a restart (this way you can close qdrant and re-open a new session): 
+   ```bash
+   docker volume create qdrant-storage
+   ``` 
+   + Then Make sure you have Qdrant's Docker Container Service running on Port 6333:
+   ```bash
+   docker run -d -p 6333:6333 -p 6334:6334 -v qdrant-storage:/qdrant/storage qdrant/qdrant
+   ```
+
+   + *If you'd like to use this with normal ephemeral container memory that wipes after shutdown/restart:* 
    
    ```bash
    docker run -p 6333:6333 qdrant/qdrant:latest 
    ```
+
 
 ---
 
@@ -100,7 +110,8 @@ If you'd like to run **DREAMER** with the command `ai`
 #### Azeem's Bash Shortcuts ####
 
 #azeem_ai shortcuts
-alias ai="cd && cd azeem_ai && source ~/azeem_ai/venv/bin/activate && python3 azeem_ai_dreamer.py"
+alias qdrant="docker run -d -p 6333:6333 -p 6334:6334 -v qdrant-storage:/qdrant/storage qdrant/qdrant"
+alias ai="cd && cd azeem_ai && source ~/azeem_ai/venv/bin/activate && qdrant && python3 azeem_ai_dreamer.py"
 
 #parsertongue python shortcuts
 alias activate="source venv/bin/activate"
