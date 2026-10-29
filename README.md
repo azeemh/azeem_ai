@@ -18,6 +18,34 @@ The implementation of *Cognitive AI Architecture* also serves as a useful demons
 *   **Cognitive Resonance & Truth Seeking:** When faced with multiple sources claiming conflicting truths, it will either research more or acknowledge lack of info, and is instructed to only present information verified by multiple credible sources.
 *   **Dynamic Variable Metadata Weighting:** Stores raw facts along with salience indicators, timestamps, and access trackers to establish cognitive importance patterns.
 *   **Built-in Local Document Sharding:** Slices extensive textual materials into deep sliding overlapping window arrays using CPU-bound embedding matrices.
+---
+### Quick Start Guide:
+
+First Time Users: 
+1. Install Ollama
+2. Have a Model Running
+3. Install Docker
+4. Create a Docker Volume as instructed below in System Prequisites (Section 2a). 
+5. Run Docker Container as instructed below in System Prequisites (Section 2b).
+6. Complete the **Installation and Local Environment Setup** by cloning the repo, initalizating the virtual environment, and installing the dependencies.
+7. Run the app as specifed in **Interactive Console Command Guide**
+
+#### Returning Users:
+1. Make sure the Qdrant Container is running 
+```bash 
+docker run -d -p 6333:6333 -p 6334:6334 -v qdrant-storage:/qdrant/storage qdrant/qdrant
+```
+2. Run the script
+```bash
+python3 azeem_ai_dreamer.py
+```
+`python` may be the default if your computer never had to deal with the python2 and python3 fiasco.
+
+#### If you installed my shortcuts:
+1. Type `qdrant` and press ENTER to start qdrant if it already is not running.
+2. Type `ai` and press ENTER to get started.
+
+
 
 ---
 
@@ -31,13 +59,17 @@ Ensure the following system background engines are active before firing up the n
    + To download a model, such as Qwen3:14B, use `ollama pull modelname`, for example: `ollama pull qwen3:14b`
 
 2.  **Qdrant Vector Database Docker Container already running** 
-   + First make a local volume so your qdrant memories survive a restart (this way you can close qdrant and re-open a new session): 
+   + a. First make a local volume so your qdrant memories survive a restart (this way you can close qdrant and re-open a new session): 
    ```bash
    docker volume create qdrant-storage
    ``` 
-   + Then Make sure you have Qdrant's Docker Container Service running on Port 6333:
+   + b. Then Make sure you have Qdrant's Docker Container Service running on Port 6333:
    ```bash
    docker run -d -p 6333:6333 -p 6334:6334 -v qdrant-storage:/qdrant/storage qdrant/qdrant
+   ```
+   + c. **Once you have Azeem's Bash Shortcuts installed you can just type:** 
+   ```bash
+   qdrant
    ```
 
    + *If you'd like to use this with normal ephemeral container memory that wipes after shutdown/restart:* 
@@ -111,7 +143,7 @@ If you'd like to run **DREAMER** with the command `ai`
 
 #azeem_ai shortcuts
 alias qdrant="docker run -d -p 6333:6333 -p 6334:6334 -v qdrant-storage:/qdrant/storage qdrant/qdrant"
-alias ai="cd && cd azeem_ai && source ~/azeem_ai/venv/bin/activate && qdrant && python3 azeem_ai_dreamer.py"
+alias ai="cd && cd azeem_ai && source ~/azeem_ai/venv/bin/activate && python3 azeem_ai_dreamer.py"
 
 #parsertongue python shortcuts
 alias activate="source venv/bin/activate"
