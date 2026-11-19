@@ -8,7 +8,7 @@ An advanced, offline-first research AI system built with a biologically-inspired
 
 The implementation of *Cognitive AI Architecture* also serves as a useful demonstration of how **Cognitive Resonance thinking systems lead to a reduction of doublethink, dissonance, and confusion, encourage critical thinking patterns, and lead to truth seeking behavior, regardless of whether the intelligence is organic or artificial.**
 
-[For future discussion, consider Azeem's forthcoming book: The Theory of Cognitive Resonance, which was originally written pre AI, proven and demonstrated on Humans first, and later proven on AI as well.]
+[For future discussion, consider Azeem's forthcoming book: The Theory of Cognitive Resonance, originally coining the term pre AI, proving and demonstrating the idea on Humans first, and now with this software library demonstrating it with AI as well.]
 
 ## Cognitive Architecture Features
 
@@ -44,8 +44,6 @@ python3 azeem_ai_dreamer.py
 #### If you installed my shortcuts:
 1. Type `qdrant` and press ENTER to start qdrant if it already is not running.
 2. Type `ai` and press ENTER to get started.
-
-
 
 ---
 
@@ -136,7 +134,7 @@ Manage your Qdrant Memories Database by going to http://localhost:6333/ in your 
 ### Azeem's Bash Shortcuts (optional shortcut commands for your CLI)
 
 If you'd like to run **DREAMER** with the command `ai` 
-1. open your .bashrc with vi: `vi ~/.bashrc` and scroll to the end with your keyboard arrows
+1. (OG Linux, Posix, Mac OS users, anything with a bash terminal) open your .bashrc with vi: `vi ~/.bashrc` and scroll to the end with your keyboard arrows | ZSH users & Mac OS Catalina+ users open .zshrc `vi ~/.zshrc` as they use zsh terminal and likewise scroll to the end.
 2. press I to enter insert mode, then paste these aliases. (the `ai` alias shortcut assumes you installed to a folder in your user's home directory called `azeem_ai` which you should have by default if you followed the installation instructions above.)
 ```
 #### Azeem's Bash Shortcuts ####
@@ -152,6 +150,6 @@ alias mm="deactivate && cd"
 
 ```
 3. Make sure you've pasted them correctly and quit with saving by pressing ESC, then press Z twice, then press ENTER. (to quit vi editor without saving press ESC, then type `:qa` or `:qa!`)
-4. Afterwards you should be back at the command line. Type `source ~/.bashrc` to enable the use of your new bash shortcut in the current terminal session, or otherwise restart your terminal/start a new terminal session. 
+4. Afterwards you should be back at the command line. Type `source ~/.bashrc` (or `source ~/.zshrc`) to enable the use of your new shortcut in the current terminal session, or otherwise restart your terminal/start a new terminal session. 
 
-Upon successfully installing the bash shortcut, you should be able to type **`ai`** into your terminal and run DREAMER.
+Upon successfully installing the bash shortcut, you should be able to type **`quadrant`** into your terminal and start the memory server. Then you should be able to type **`ai`** into your terminal and run DREAMER.
