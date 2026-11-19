@@ -25,10 +25,9 @@ First Time Users:
 1. Install Ollama
 2. Have a Model Running
 3. Install Docker
-4. Create a Docker Volume as instructed below in System Prequisites (Section 2a). 
-5. Run Docker Container as instructed below in System Prequisites (Section 2b).
-6. Complete the **Installation and Local Environment Setup** by cloning the repo, initalizating the virtual environment, and installing the dependencies.
-7. Run the app as specifed in **Interactive Console Command Guide**
+4. Start Docker Container as instructed below in System Prequisites (Section 2).
+5. Complete the **Installation and Local Environment Setup** by cloning the repo, initalizating the virtual environment, and installing the dependencies.
+6. Run the app as specifed in **Interactive Console Command Guide**
 
 #### Returning Users:
 1. Make sure the Qdrant Container is running 
@@ -70,11 +69,13 @@ Ensure the following system background engines are active before firing up the n
    qdrant
    ```
 
-   + *If you'd like to use this with normal ephemeral container memory that wipes after shutdown/restart:* 
+   + ***Only use this command instead if you'd like to use ephemeral container memory that wipes after shutdown/restart:*** 
    
    ```bash
    docker run -p 6333:6333 qdrant/qdrant:latest 
    ```
+
+   + Advanced users will know that `docker run -d -p 6333:6333 -p 6334:6334 -v qdrant-storage:/qdrant/storage qdrant/qdrant` will automatically create the qdrant-storage volume if it doesn't exist but the command isn't very easy to parse at a glance for humans and normal people to know what's going on, so we explicitly create the volume. Also users can create new volumes and modify the -v flag to correspond to the new volume, thus allowing them to run the qdrant system with different memory bank volumes. So a researcher can run the dreamer and control system on various models, and compare model performance across various memory bank collections, explore memory deletion implications, and more, 
 
 
 ---
@@ -152,4 +153,4 @@ alias mm="deactivate && cd"
 3. Make sure you've pasted them correctly and quit with saving by pressing ESC, then press Z twice, then press ENTER. (to quit vi editor without saving press ESC, then type `:qa` or `:qa!`)
 4. Afterwards you should be back at the command line. Type `source ~/.bashrc` (or `source ~/.zshrc`) to enable the use of your new shortcut in the current terminal session, or otherwise restart your terminal/start a new terminal session. 
 
-Upon successfully installing the bash shortcut, you should be able to type **`quadrant`** into your terminal and start the memory server. Then you should be able to type **`ai`** into your terminal and run DREAMER.
+Upon successfully installing the bash shortcuts, you should be able to type **`qdrant`** into your terminal and start the memory server. Then you should be able to type **`ai`** into your terminal and run DREAMER.
