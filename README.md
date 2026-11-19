@@ -73,7 +73,7 @@ Ensure the following system background engines are active before firing up the n
    
    `docker run -p 6333:6333 qdrant/qdrant:latest`
 
-   + NOTE: advanced users will know that `docker run -d -p 6333:6333 -p 6334:6334 -v qdrant-storage:/qdrant/storage qdrant/qdrant` will automatically create the qdrant-storage volume if it doesn't exist but the command isn't very easy to parse at a glance for humans and normal people to know what's going on, so we explicitly create the volume. Also users can create new volumes and modify the -v flag to correspond to the new volume, thus allowing them to run the qdrant system with different memory bank volumes. So a researcher can run the dreamer and control system on various models, and compare model performance across various memory bank collections, explore memory deletion implications, and more, 
+   + NOTE: advanced users will know that `docker run -d -p 6333:6333 -p 6334:6334 -v qdrant-storage:/qdrant/storage qdrant/qdrant` from STEP 2B will automatically create the qdrant-storage volume if it doesn't exist, however the command isn't very easy to parse at a glance for humans, users, and normal people to know what's going on, so I explicitly included the command to create a volume. Users can also create new volumes and modify the -v flag to correspond to the new volume, thus allowing them to run the qdrant system with different memory bank volumes. Thus a researcher can run the dreamer and control system on various models, and compare model performance across various memory bank collections, explore memory deletion implications, and more, 
 
 
 ---
