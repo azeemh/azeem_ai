@@ -10,16 +10,20 @@ The implementation of *Cognitive AI Architecture* also serves as a useful demons
 
 [For future discussion, consider Azeem's forthcoming book: The Theory of Cognitive Resonance, originally coining the term pre AI, proving and demonstrating the idea on Humans first, and now with this software library demonstrating it with AI as well.]
 
-## Cognitive Architecture Features
+## Cognitive Architecture
 
-*   **Three-Tier Memory Hierarchy:** Separates immediate context windows (Working Memory) from fast state tracking (Short-Term Cache) and optimized, long-term conceptual stores (Long Term Memory much like the Cerebral Cortex).
+*   **Multi-Tier Memory Hierarchy:** Separates immediate context windows (Working Memory) from fast state tracking (Short-Term Cache) and optimized, long-term conceptual stores (Long Term Memory much like the Cerebral Cortex).
 *   **Asynchronous "Dream" Consolidation Loop:** A background thread waits for 60 seconds of quiet, then processes raw insights — stripping formatting clutter, flattening overlapping data boundaries, and resolving logical contradictions. Active conversations are never interrupted.
 *   **Refined Tool Handling & Researching:** Generates search engine queries using an independent keyword extractor and executes structural multi-turn tool loops over live data streams.
 *   **Cognitive Resonance & Truth Seeking:** When faced with multiple sources claiming conflicting truths, it will either research more or acknowledge lack of info, and is instructed to only present information verified by multiple credible sources.
-*    **Salience-Weighted Memory:** Every fact carries a salience score (1–10). Retrieval fetches the top ten cosine matches, reranks with 0.65 × similarity + 0.35 × salience, and injects the top three. Retrieved facts get +1 salience; untouched facts decay by 1 per week (floor 1); superseded facts are demoted to 2.
-*   **Multi-Document Ingestion:** `ingest path/to/file` slices any document into sliding-window character shards using Ollama-served embeddings on CPU. Multiple documents coexist; appending --doc to the end of a query searches across all of them, and --docs lists what's in the corpus.
-*   **Single-Model Reasoning:** One chat model instance handles chat, tool calls, keyword extraction, and consolidation. Load parameters are pinned so Ollama reuses the same loaded instance across call sites — no reloads between a tool call and its streamed answer. This optimization allows higher accuracy and one instance to stay in memory on your GPU, especially useful for folks optimizing VRAM use...
+*    **Salience-Weighted Memory:** Every fact carries a salience score (1–10). Retrieval fetches the top ten cosine matches, reranks with 0.65 × similarity + 0.35 × salience, and injects the top three. Retrieved facts get +1 salience; untouched facts decay by 1 per week (floor 1); superseded facts are demoted to 2... (this can and should be experimented with)
+
+## Optimizations & Features
+
+*   **Multi-Document Ingestion:** `ingest path/to/file` slices any document into sliding-window character shards using Ollama-served embeddings on CPU. Multiple documents coexist; appending `--doc` to the end of a query searches across all of them, and the command `ls docs` lists what's in the corpus.
+*   **Single-Model Reasoning:** One chat model instance handles chat, tool calls, keyword extraction, and consolidation. Load parameters are pinned so Ollama reuses the same loaded instance across call sites — no reloads between a tool call and its streamed answer. This optimization allows higher accuracy and one instance to stay in memory on your GPU, which is especially useful for folks optimizing their VRAM use...
 *   **CPU-Only Embeddings:** The embedding model (`qwen3-embedding:4b`, 2560-dim) is served by Ollama with `num_gpu: 0`, keeping VRAM fully reserved for the chat model.
+
 ---
 ### Quick Start Guide:
 
@@ -128,9 +132,7 @@ Manage your Qdrant Memories Database by going to http://localhost:6333/ in your 
 
 + Quick Link to Memories Dashboard For Facts: http://localhost:6333/dashboard#/collections/fast_local_memories
 + Quick Link to Ingested Documents: http://localhost:6333/dashboard#/collections/document_shards
-
 ---
-
 ### Azeem's Bash Shortcuts (optional shortcut commands for your CLI)
 
 If you'd like to run **DREAMER** with the command `ai` 
@@ -146,8 +148,6 @@ alias ai="cd && cd azeem_ai && source ~/azeem_ai/venv/bin/activate && python3 az
 #parsertongue python shortcuts
 alias activate="source venv/bin/activate"
 alias mm="deactivate && cd"
-
-
 ```
 3. Make sure you've pasted them correctly and quit with saving by pressing ESC, then press Z twice, then press ENTER. (to quit vi editor without saving press ESC, then type `:qa` or `:qa!`)
 4. Afterwards you should be back at the command line. Type `source ~/.bashrc` (or `source ~/.zshrc`) to enable the use of your new shortcut in the current terminal session, or otherwise restart your terminal/start a new terminal session. 
