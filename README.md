@@ -20,7 +20,7 @@ The implementation of *Cognitive AI Architecture* also serves as a useful demons
 
 ## Optimizations & Features
 
-*   **Multi-Document Ingestion:** `ingest path/to/file` slices any document into sliding-window character shards using Ollama-served embeddings on CPU. Multiple documents coexist; appending `--doc` to the end of a query searches across all of them, and the command `ls docs` lists what's in the corpus.
+*   **Multi-Document Memory:** `ingest path/to/file` slices any document into sliding-window character shards using Ollama-served embeddings on CPU. Multiple documents can now coexist in memory in a single context; appending `--doc` to the end of a query searches across all of them, and the command `ls docs` lists what's in the corpus.
 *   **Single-Model Reasoning:** One chat model instance handles chat, tool calls, keyword extraction, and consolidation. Load parameters are pinned so Ollama reuses the same loaded instance across call sites — no reloads between a tool call and its streamed answer. This optimization allows higher accuracy and one instance to stay in memory on your GPU, which is especially useful for folks optimizing their VRAM use...
 *   **CPU-Only Embeddings:** The embedding model (`qwen3-embedding:4b`, 2560-dim) is served by Ollama with `num_gpu: 0`, keeping VRAM fully reserved for the chat model.
 
