@@ -127,6 +127,7 @@ The workspace environment features multiline interface handling. Type complex pr
 Manage your Qdrant Memories Database by going to http://localhost:6333/ in your browser while the Qdrant docker container is running.
 
 + Quick Link to Memories Dashboard For Facts: http://localhost:6333/dashboard#/collections/fast_local_memories
++ Quick Link to Ingested Documents: http://localhost:6333/dashboard#/collections/document_shards
 
 ---
 
