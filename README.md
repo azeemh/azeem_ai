@@ -13,11 +13,13 @@ The implementation of *Cognitive AI Architecture* also serves as a useful demons
 ## Cognitive Architecture Features
 
 *   **Three-Tier Memory Hierarchy:** Separates immediate context windows (Working Memory) from fast state tracking (Short-Term Cache) and optimized, long-term conceptual stores (Long Term Memory much like the Cerebral Cortex).
-*   **Asynchronous "Dream" Consolidation Loop:** A continuous background thread processes raw, real-time insights, strips out formatting clutter, flattens overlapping data boundaries, and resolves logical contradictions.
+*   **Asynchronous "Dream" Consolidation Loop:** A background thread waits for 60 seconds of quiet, then processes raw insights — stripping formatting clutter, flattening overlapping data boundaries, and resolving logical contradictions. Active conversations are never interrupted.
 *   **Refined Tool Handling & Researching:** Generates search engine queries using an independent keyword extractor and executes structural multi-turn tool loops over live data streams.
 *   **Cognitive Resonance & Truth Seeking:** When faced with multiple sources claiming conflicting truths, it will either research more or acknowledge lack of info, and is instructed to only present information verified by multiple credible sources.
-*   **Dynamic Variable Metadata Weighting:** Stores raw facts along with salience indicators, timestamps, and access trackers to establish cognitive importance patterns.
-*   **Built-in Local Document Sharding:** Slices extensive textual materials into deep sliding overlapping window arrays using CPU-bound embedding matrices.
+*    **Salience-Weighted Memory:** Every fact carries a salience score (1–10). Retrieval fetches the top ten cosine matches, reranks with 0.65 × similarity + 0.35 × salience, and injects the top three. Retrieved facts get +1 salience; untouched facts decay by 1 per week (floor 1); superseded facts are demoted to 2.
+*   **Multi-Document Ingestion:** `ingest path/to/file` slices any document into sliding-window character shards using Ollama-served embeddings on CPU. Multiple documents coexist; appending --doc to the end of a query searches across all of them, and --docs lists what's in the corpus.
+*   **Single-Model Reasoning:** One chat model instance handles chat, tool calls, keyword extraction, and consolidation. Load parameters are pinned so Ollama reuses the same loaded instance across call sites — no reloads between a tool call and its streamed answer. This optimization allows higher accuracy and one instance to stay in memory on your GPU, especially useful for folks optimizing VRAM use...
+*   **CPU-Only Embeddings:** The embedding model (`qwen3-embedding:4b`, 2560-dim) is served by Ollama with `num_gpu: 0`, keeping VRAM fully reserved for the chat model.
 ---
 ### Quick Start Guide:
 
@@ -25,9 +27,9 @@ First Time Users:
 1. Install Ollama
 2. Have a Model Running
 3. Install Docker
-4. Start Docker Container as instructed below in System Prequisites (Section 2).
-5. Complete the **Installation and Local Environment Setup** by cloning the repo, initalizating the virtual environment, and installing the dependencies.
-6. Run the app as specifed in **Interactive Console Command Guide**
+4. Start Docker Container as instructed below in System Prerequisites (Section 2).
+5. Complete the **Installation and Local Environment Setup** by cloning the repo, initializing the virtual environment, and installing the dependencies.
+6. Run the app as specified in **Interactive Console Command Guide**
 
 #### Returning Users:
 1. Make sure the Qdrant Container is running 
@@ -45,7 +47,6 @@ python3 azeem_ai_dreamer.py
 2. Type `ai` and press ENTER to get started.
 
 ---
-
 ## System Prerequisites
 
 Ensure the following system background engines are active before firing up the neural runtime script:
@@ -54,6 +55,10 @@ Ensure the following system background engines are active before firing up the n
    + If you dont have ollama installed follow the instructions here: https://ollama.com/download 
    + Make sure `ollama ls` shows your model. Ollama by default runs on Port 11434. DREAMER expects to find your ollama models on the default port.
    + To download a model, such as Qwen3:14B, use `ollama pull modelname`, for example: `ollama pull qwen3:14b`
+   + You MUST install an embeddings model. 
+   ```bash
+   ollama pull qwen3-embedding:4b
+   ```
 
 2.  **Qdrant Vector Database Docker Container already running** 
    + a. First make a local volume so your qdrant memories survive a restart (this way you can close qdrant and re-open a new session): 
@@ -68,16 +73,14 @@ Ensure the following system background engines are active before firing up the n
    ```bash
    qdrant
    ```
-
    + ***Only use this command instead if you'd like to use ephemeral container memory that wipes after shutdown/restart:*** 
-   
+
    `docker run -p 6333:6333 qdrant/qdrant:latest`
 
-   + NOTE: advanced users will know that `docker run -d -p 6333:6333 -p 6334:6334 -v qdrant-storage:/qdrant/storage qdrant/qdrant` from STEP 2B will automatically create the qdrant-storage volume if it doesn't exist, however the command isn't very easy to parse at a glance for humans, users, and normal people to know what's going on, so I explicitly included the command to create a volume. Users can also create new volumes and modify the -v flag to correspond to the new volume, thus allowing them to run the qdrant system with different memory bank volumes. Thus a researcher can run the dreamer and control system on various models, and compare model performance across various memory bank collections, explore memory deletion implications, and more, 
+   + NOTE: advanced users will know that `docker run -d -p 6333:6333 -p 6334:6334 -v qdrant-storage:/qdrant/storage qdrant/qdrant` from STEP 2B will automatically create the qdrant-storage volume if it doesn't exist, however the command isn't very easy to parse at a glance for humans, users, and normal people to know what's going on, so I explicitly included the command to create a volume. Users can also create new volumes and modify the -v flag to correspond to the new volume, thus allowing them to run the qdrant system with different memory bank volumes. Thus a researcher can run the dreamer and control system on various models, and compare model performance across various memory bank collections, explore memory deletion implications, and more...
 
-
+   + ⚠️ **Upgrading from the old 384-dim version:** if you previously ran an older version of DREAMER with `sentence_transformers`, your Qdrant collections use 384-dim vectors and the new script uses 2560-dim. On first launch, the script prints a `[Migration]` line and **deletes + recreates** each collection. Old memories, RLHF rules, and ingested documents are lost. Please Export via the Qdrant dashboard first if you want to keep them.
 ---
-
 ## Installation & Local Environment Setup
 
 1. **Open a New Terminal Session, and Clone the Repository Workspace to your home directory:**
@@ -97,9 +100,7 @@ Ensure the following system background engines are active before firing up the n
    ```bash
    pip install -r requirements.txt
    ```
-
 ---
-
 ## Interactive Console Command Guide
 
 Run the application:
@@ -114,14 +115,13 @@ The workspace environment features multiline interface handling. Type complex pr
 | Terminal Operator | Architectural Trigger Function |
 | :--- | :--- |
 | `ingest path/to/book.md` | Reads any doc/file, saves as qdrant shards. |
-| `read http://example.com` | Reads any website text & adds it to context. |
+| `ls docs`| Lists ingested documents
+| `read http://www.example.com` | Reads any website text & adds it to context. |
 | `--doc` | Enables AI to access ingested documents. |
 | `--web` | Enables AI to search external real-time data. |
 | `rlhf ` | Give AI reinforcement learning feedback... |
 | `exit` / `quit` | Closes the session. |
-
 ---
-
 ## Manage Qdrant Vector Memory: 
 
 Manage your Qdrant Memories Database by going to http://localhost:6333/ in your browser while the Qdrant docker container is running.
