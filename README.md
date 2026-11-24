@@ -13,16 +13,16 @@ The implementation of *Cognitive AI Architecture* also serves as a useful demons
 ## Cognitive Architecture
 
 *   **Multi-Tier Memory Hierarchy:** Separates immediate context windows (Working Memory) from fast state tracking (Short-Term Cache) and optimized, long-term conceptual stores (Long Term Memory much like the Cerebral Cortex).
-*   **Asynchronous "Dream" Consolidation Loop:** A background thread waits for 60 seconds of quiet, then processes raw insights — stripping formatting clutter, flattening overlapping data boundaries, and resolving logical contradictions. Active conversations are never interrupted.
+*   **Asynchronous "Dream" Consolidation Loop:** A background thread waits for 5 minutes (300 seconds) of quiet, then processes raw insights — stripping formatting clutter, flattening overlapping data boundaries, and resolving logical contradictions. Active conversations are never interrupted.
 *   **Refined Tool Handling & Researching:** Generates search engine queries using an independent keyword extractor and executes structural multi-turn tool loops over live data streams.
 *   **Cognitive Resonance & Truth Seeking:** When faced with multiple sources claiming conflicting truths, it will either research more or acknowledge lack of info, and is instructed to only present information verified by multiple credible sources.
 *    **Salience-Weighted Memory:** Every fact carries a salience score (1–10). Retrieval fetches the top ten cosine matches, reranks with 0.65 × similarity + 0.35 × salience, and injects the top three. Retrieved facts get +1 salience; untouched facts decay by 1 per week (floor 1); superseded facts are demoted to 2... (this can and should be experimented with)
 
 ## Optimizations & Features
 
-*   **Multi-Document Memory:** `ingest path/to/file` slices any document into sliding-window character shards using Ollama-served embeddings on CPU. Multiple documents can now coexist in memory in a single context; appending `--doc` to the end of a query searches across all of them, and the command `ls docs` lists all documents currently loaded into working memory.
+*   **Multi-Document Memory:** `ingest path/to/file` slices any document into sliding-window character shards using Ollama-served embeddings. Multiple documents can now coexist in memory in a single context; appending `--doc` to the end of a query searches across all of them, and the command `ls docs` lists all documents currently loaded into working memory.
 *   **Single-Model Reasoning:** One chat model instance handles chat, tool calls, keyword extraction, and consolidation. Load parameters are pinned so Ollama reuses the same loaded instance across call sites — no reloads between a tool call and its streamed answer. This optimization allows higher accuracy and one instance to stay in memory on your GPU, which is especially useful for folks optimizing their VRAM use...
-*   **CPU-Only Embeddings:** The embedding model (`qwen3-embedding:4b`, 2560-dim) is served by Ollama with `num_gpu: 0`, keeping VRAM fully reserved for the chat model.
+*   **GPU Embeddings For Speed:** The embedding model (`qwen3-embedding:4b`, 2560-dim) is served by Ollama with `num_gpu: 1`, after the ollama idle default (5m) unloads the main model, keeping VRAM fully reserved for the chat model when running and only running the embeddings during idle/sleep...
 
 ---
 ### Quick Start Guide:
