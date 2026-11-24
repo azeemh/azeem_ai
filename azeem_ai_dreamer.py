@@ -27,11 +27,11 @@ active_session_facts = []
 session_lock = threading.Lock()
 last_memory_time = 0.0
 
-# --- EMBEDDING CONFIG (Ollama-served, CPU-only) ---
+# --- EMBEDDING CONFIG (Ollama-served, false for CPU-only) ---
 EMBED_MODEL = "qwen3-embedding:4b"
 EMBED_DIM = 2560
 EMBED_BATCH_SIZE = 16
-EMBED_ON_GPU = False           # embedder stays on CPU; GPU is reserved for the chat model
+EMBED_ON_GPU = True           # False for embedder stays on CPU; then GPU is reserved for the chat model
 EMBED_KEEP_ALIVE = "30s"
 
 # --- CHAT / CONSOLIDATION CONFIG (single instance, one model) ---
@@ -57,7 +57,7 @@ RERANK_FETCH = 10
 RERANK_TOP = 3
 SALIENCE_WEIGHT = 0.35
 CONSOLIDATION_SCROLL_CAP = 150
-IDLE_BEFORE_CONSOLIDATION = 60     # seconds of quiet before a dream cycle runs
+IDLE_BEFORE_CONSOLIDATION = 305     # seconds of quiet before a dream cycle runs
 
 # Memory tag
 MEM_TAG_OPEN = "<memory>"
@@ -93,7 +93,7 @@ def _embed_opts():
     """Options for the embedding model — pinned to CPU."""
     opts = {}
     if not EMBED_ON_GPU:
-        opts["num_gpu"] = 0
+        opts["num_gpu"] = 1
     return opts
 
 
